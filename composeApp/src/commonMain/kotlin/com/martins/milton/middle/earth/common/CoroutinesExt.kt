@@ -22,6 +22,7 @@ fun <T> CoroutineScope.launchAndGetData(
                 onResult(ResultData.Success(result))
             }
         } catch (exception: Exception) {
+            onResult(ResultData.Loading(false))
             onResult(ResultData.Error(exception.message.orEmpty()))
         }
     }

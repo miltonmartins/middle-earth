@@ -33,11 +33,16 @@ fun RefreshBox(
             .pullRefresh(pullRefreshState)
     ) {
         content()
-        PullRefreshIndicator(
-            modifier = Modifier.align(Alignment.TopCenter),
-            refreshing = loading,
-            state = pullRefreshState
-        )
+
+        if (loading) {
+            LoadingAnimated(Modifier.align(Alignment.TopCenter))
+        } else {
+            PullRefreshIndicator(
+                modifier = Modifier.align(Alignment.TopCenter),
+                refreshing = loading,
+                state = pullRefreshState
+            )
+        }
     }
 }
 

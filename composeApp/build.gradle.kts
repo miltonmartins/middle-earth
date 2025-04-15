@@ -58,6 +58,8 @@ kotlin {
             implementation(libs.bundles.ktor.client.common)
             implementation(libs.koin.core)
             implementation(libs.koin.viewmodel)
+            implementation(libs.navigation)
+            implementation(compose.materialIconsExtended)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))

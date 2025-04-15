@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <string name="app_name">Middle-earth</string>
+
+    <string name="navigation_movies">Movies</string>
+    <string name="navigation_characters">Characters</string>
+    <string name="navigation_books">Books</string>
+</resources>
