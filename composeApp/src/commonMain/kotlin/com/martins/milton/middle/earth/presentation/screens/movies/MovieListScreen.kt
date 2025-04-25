@@ -8,6 +8,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import app.cash.paging.compose.collectAsLazyPagingItems
+import com.martins.milton.middle.earth.common.getError
+import com.martins.milton.middle.earth.common.isLoading
 import com.martins.milton.middle.earth.presentation.composables.AppBar
 import com.martins.milton.middle.earth.presentation.composables.MovieItem
 import com.martins.milton.middle.earth.presentation.composables.RefreshBox
@@ -20,24 +23,25 @@ fun MovieListScreen(
     viewModel: MovieListViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val movies = uiState.movies.collectAsLazyPagingItems()
 
     LaunchedEffect(Unit) { viewModel.fetchMovies() }
 
     AppBar(
         navController = navController,
-        errorMessage = uiState.error
+        errorMessage = movies.getError()
     ) { innerPadding ->
         RefreshBox(
             modifier = Modifier.padding(innerPadding),
             onRefresh = viewModel::fetchMovies,
-            loading = uiState.loading
+            loading = movies.isLoading()
         ) {
             LazyColumn(modifier = Modifier.padding(MediumSpacing)) {
                 items(
-                    count = uiState.movies.size,
-                    key = { uiState.movies[it].id }
-                ) {
-                    MovieItem(uiState.movies[it])
+                    count = movies.itemCount,
+                    key = { movies[it]?.id.orEmpty() }
+                ) { index ->
+                    movies[index]?.let { movie -> MovieItem(movie) }
                 }
             }
         }

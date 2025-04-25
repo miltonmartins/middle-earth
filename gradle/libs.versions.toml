@@ -16,6 +16,7 @@ koin = "4.0.3"
 konsist = "0.17.3"
 navigation = "2.8.0-alpha10"
 core-splashscreen = "1.0.1"
+paging = "3.3.0-alpha02-0.5.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -39,6 +40,7 @@ koin-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref
 konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation"}
 core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "core-splashscreen"}
+paging = { module = "app.cash.paging:paging-compose-common", version.ref = "paging" }
 
 [bundles]
 ktor-client-common = [

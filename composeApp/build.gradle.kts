@@ -61,6 +61,7 @@ kotlin {
             implementation(libs.koin.viewmodel)
             implementation(libs.navigation)
             implementation(compose.materialIconsExtended)
+            implementation(libs.paging)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))

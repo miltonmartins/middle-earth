@@ -13,7 +13,7 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = AppDestination.Movies.route,
+        startDestination = AppDestination.Movies.route
     ) {
         composable(route = AppDestination.Movies.route) {
             MovieListScreen(navController = navController)
