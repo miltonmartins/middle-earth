@@ -5,4 +5,9 @@
     <string name="navigation_movies">Movies</string>
     <string name="navigation_characters">Characters</string>
     <string name="navigation_books">Books</string>
+
+    <string name="filter_by_name">Enter with a character name</string>
+
+    <string name="action_search">Search</string>
+    <string name="action_clear">Clear</string>
 </resources>

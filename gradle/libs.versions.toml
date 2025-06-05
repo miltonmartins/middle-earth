@@ -17,6 +17,7 @@ konsist = "0.17.3"
 navigation = "2.8.0-alpha10"
 core-splashscreen = "1.0.1"
 paging = "3.3.0-alpha02-0.5.1"
+browser = "1.8.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -35,12 +36,14 @@ ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "kto
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-client-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
 konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation"}
 core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "core-splashscreen"}
 paging = { module = "app.cash.paging:paging-compose-common", version.ref = "paging" }
+browser = { module = "androidx.browser:browser", version.ref = "browser" }
 
 [bundles]
 ktor-client-common = [

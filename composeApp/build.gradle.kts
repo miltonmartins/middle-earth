@@ -46,6 +46,8 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.core.splashscreen)
+            implementation(libs.browser)
+            implementation(libs.koin.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -57,7 +59,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.bundles.ktor.client.common)
-            implementation(libs.koin.core)
+            api(libs.koin.core)
             implementation(libs.koin.viewmodel)
             implementation(libs.navigation)
             implementation(compose.materialIconsExtended)
