@@ -7,8 +7,10 @@ import com.martins.milton.middle.earth.common.Constants
 import com.martins.milton.middle.earth.common.ResultData
 import com.martins.milton.middle.earth.common.ResultDataPagingSource
 import com.martins.milton.middle.earth.common.map
+import com.martins.milton.middle.earth.data.mapper.mapToBooks
 import com.martins.milton.middle.earth.data.mapper.mapToCharacters
 import com.martins.milton.middle.earth.data.mapper.mapToMovies
+import com.martins.milton.middle.earth.domain.entity.Book
 import com.martins.milton.middle.earth.domain.entity.Character
 import com.martins.milton.middle.earth.domain.entity.Movie
 import com.martins.milton.middle.earth.domain.repository.LordOfRingsRepository
@@ -34,6 +36,15 @@ class LordOfRingsRepositoryImpl(
             Pair(
                 first = it.pages > page,
                 second = it.docs.mapToCharacters()
+            )
+        }
+    }
+
+    override fun getBooks(): Flow<PagingData<Book>> = getPagerFlow { page ->
+        dataSource.getBooks(page = page).map {
+            Pair(
+                first = it.pages > page,
+                second = it.docs.mapToBooks()
             )
         }
     }

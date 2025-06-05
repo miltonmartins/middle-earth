@@ -1,4 +1,4 @@
-package com.martins.milton.middle.earth.presentation.screens.movies
+package com.martins.milton.middle.earth.presentation.screens.books
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,33 +18,33 @@ import com.martins.milton.middle.earth.theming.MediumSpacing
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun MovieListScreen(
+fun BookListScreen(
     navController: NavController,
-    viewModel: MovieListViewModel = koinViewModel()
+    viewModel: BookListViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val movies = uiState.movies.collectAsLazyPagingItems()
+    val books = uiState.books.collectAsLazyPagingItems()
 
-    LaunchedEffect(Unit) { viewModel.fetchMovies() }
+    LaunchedEffect(Unit) { viewModel.fetchBooks() }
 
     AppBar(
         navController = navController,
-        errorMessage = movies.getError()
+        errorMessage = books.getError()
     ) { innerPadding ->
         RefreshBox(
             modifier = Modifier.padding(innerPadding),
-            onRefresh = viewModel::fetchMovies,
-            loading = movies.isLoading()
+            onRefresh = viewModel::fetchBooks,
+            loading = books.isLoading()
         ) {
             LazyColumn(modifier = Modifier.padding(MediumSpacing)) {
                 items(
-                    count = movies.itemCount,
-                    key = { movies[it]?.id.orEmpty() }
+                    count = books.itemCount,
+                    key = { books[it]?.id.orEmpty() }
                 ) { index ->
-                    movies[index]?.let { movie ->
+                    books[index]?.let { book ->
                         InfoItem(
-                            title = movie.name,
-                            description = movie.time
+                            title = book.name,
+                            description = ""
                         )
                     }
                 }

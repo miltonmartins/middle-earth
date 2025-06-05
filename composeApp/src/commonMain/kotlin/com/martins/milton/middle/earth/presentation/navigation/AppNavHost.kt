@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.martins.milton.middle.earth.presentation.screens.books.BookListScreen
 import com.martins.milton.middle.earth.presentation.screens.characters.CharacterListScreen
 import com.martins.milton.middle.earth.presentation.screens.movies.MovieListScreen
 
@@ -22,6 +23,10 @@ fun AppNavHost(
 
         composable(route = AppDestination.Characters.route) {
             CharacterListScreen(navController)
+        }
+
+        composable(route = AppDestination.Books.route) {
+            BookListScreen(navController)
         }
     }
 }

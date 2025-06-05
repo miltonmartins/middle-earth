@@ -5,6 +5,7 @@ object Constants {
         object Path {
             const val MOVIES = "movie"
             const val CHARACTERS = "character"
+            const val BOOKS = "book"
         }
 
         object Param {

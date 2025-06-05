@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -15,7 +14,7 @@ import com.martins.milton.middle.earth.common.BrowserTab
 import com.martins.milton.middle.earth.common.getError
 import com.martins.milton.middle.earth.common.isLoading
 import com.martins.milton.middle.earth.presentation.composables.AppBar
-import com.martins.milton.middle.earth.presentation.composables.CharacterItem
+import com.martins.milton.middle.earth.presentation.composables.InfoItem
 import com.martins.milton.middle.earth.presentation.composables.RefreshBox
 import com.martins.milton.middle.earth.presentation.composables.SearchTextField
 import com.martins.milton.middle.earth.theming.MediumSpacing
@@ -33,8 +32,6 @@ fun CharacterListScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val characters = uiState.characters.collectAsLazyPagingItems()
     val browserTab = koinInject<BrowserTab>()
-
-    LaunchedEffect(Unit) { viewModel.fetchCharacters() }
 
     AppBar(
         navController = navController,
@@ -58,9 +55,9 @@ fun CharacterListScreen(
                         key = { characters[it]?.id.orEmpty() }
                     ) { index ->
                         characters[index]?.let { character ->
-                            CharacterItem(
-                                name = character.name,
-                                race = character.race,
+                            InfoItem(
+                                title = character.name,
+                                description = character.race,
                                 url = character.wikiUrl,
                                 onClick = browserTab::open
                             )

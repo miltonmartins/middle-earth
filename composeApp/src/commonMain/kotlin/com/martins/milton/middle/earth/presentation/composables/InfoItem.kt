@@ -20,14 +20,15 @@ import com.martins.milton.middle.earth.theming.SmallSpacing
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun CharacterItem(
-    name: String,
-    race: String,
-    url: String?,
+fun InfoItem(
+    modifier: Modifier = Modifier,
+    title: String,
+    description: String,
+    url: String? = null,
     onClick: GenericCallback<String> = {}
 ) {
     Card(
-        modifier = Modifier.padding(MediumSpacing),
+        modifier = modifier.padding(MediumSpacing),
         shape = RoundedCornerShape(SmallSpacing),
         onClick = { url?.let { onClick(it) } }
     ) {
@@ -39,11 +40,11 @@ fun CharacterItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = name,
+                text = title,
                 style = MaterialTheme.typography.subtitle1
             )
             Text(
-                text = race,
+                text = description,
                 style = MaterialTheme.typography.caption,
                 fontWeight = FontWeight.ExtraBold
             )
